@@ -22,7 +22,9 @@ RUN curl -O https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-$
     && tar -xvzf spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz -C ${SPARK_MASTER_HOME} \
     && rm spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
 COPY files/spark-env.sh ${SPARK_MASTER_HOME}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}/conf/spark-env.sh
-RUN chmod +x ${SPARK_MASTER_HOME}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}/sbin/start-master.sh
+COPY files/spark-daemon.sh ${SPARK_MASTER_HOME}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}/sbin/spark-daemon.sh
+RUN chmod +x ${SPARK_MASTER_HOME}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}/sbin/start-master.sh \
+    && chmod +x ${SPARK_MASTER_HOME}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}/sbin/spark-daemon.sh
 
 EXPOSE 8080 7077
 
