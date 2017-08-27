@@ -26,6 +26,6 @@ COPY files/spark-daemon.sh ${SPARK_MASTER_HOME}/spark-${SPARK_VERSION}-bin-hadoo
 RUN chmod +x ${SPARK_MASTER_HOME}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}/sbin/start-master.sh \
     && chmod +x ${SPARK_MASTER_HOME}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}/sbin/spark-daemon.sh
 
-EXPOSE 8080 7077
+EXPOSE 8080 7077 6066
 
 CMD ${SPARK_MASTER_HOME}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}/sbin/start-master.sh
